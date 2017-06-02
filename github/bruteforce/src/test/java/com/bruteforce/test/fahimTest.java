@@ -89,8 +89,10 @@ public class fahimTest {
 	  driver.findElement(By.xpath(".//*[@id='days']")).sendKeys("7");
 	  driver.findElement(By.xpath(".//*[@id='months']")).sendKeys("April");
 	  driver.findElement(By.xpath(".//*[@id='years']")).sendKeys("1990");
-	  //driver.findElement(By.xpath(".//*[@id='submitAccount']")).click();
+	  driver.findElement(By.xpath(".//*[@id='submitAccount']")).click();
 	  
+	  String name = firstName+" "+lastName;
+	  System.out.println(name);
 	  
   }
   
