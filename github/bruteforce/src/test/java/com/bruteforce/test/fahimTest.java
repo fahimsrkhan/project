@@ -1,6 +1,9 @@
 package com.bruteforce.test;
 
 import org.testng.annotations.Test;
+
+import com.bruteforce.HomePage;
+
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
@@ -8,21 +11,27 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 
 
 
-
 public class fahimTest {
+	HomePage objHomePage;
 	
 	WebDriver driver;
+	
+	WebElement message, name01, name02;
 	
 	
   @Test (priority = 1, enabled=false)
   public void invalidEmail() {
 	  
-	  driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  //driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  
+	  objHomePage = new HomePage(driver);
+	  objHomePage.clickSignInLink();
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  
 	  driver.findElement(By.xpath(".//*[@id='email_create']")).click();
@@ -37,7 +46,10 @@ public class fahimTest {
   @Test (priority = 2, enabled=false)
   public void existingEmail() {
 	  
-	  driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  //driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  
+	  objHomePage = new HomePage(driver);
+	  objHomePage.clickSignInLink();
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  
 	  driver.findElement(By.xpath(".//*[@id='email_create']")).click();
@@ -56,16 +68,15 @@ public class fahimTest {
 	  }
   }
   
-  @Test (priority = 3, enabled = true)
+  @Test (priority = 3, enabled = false)
   public void createNewAccount() {
 	  
-	  driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  //driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  objHomePage = new HomePage(driver);
+	  objHomePage.clickSignInLink();
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  
-	// random string of length 8 composed of alphabetic characters 
-	//	  String firstName = RandomStringUtils.randomAlphabetic(7); 
-	//  String lastName = RandomStringUtils.randomAlphanumeric(6); 
-	  
+	  //used random key
 	  String alphabet = "abcdefghijklmnopqrstuvwxyz";
 	  String firstName = RandomStringUtils.random(8, alphabet);
 	  String lastName = RandomStringUtils.random(8, alphabet);
@@ -91,14 +102,108 @@ public class fahimTest {
 	  driver.findElement(By.xpath(".//*[@id='years']")).sendKeys("1990");
 	  driver.findElement(By.xpath(".//*[@id='submitAccount']")).click();
 	  
+	  //String name = firstName+" "+lastName;
+	  //System.out.println(name);
+	  
+	  
+	  
+	  String message = driver.findElement(By.xpath(".//*[@id='center_column']/p[1]")).getText();
+	  String message02 = "Your account has been created.";
+	 
+	  System.out.println(message);
+	  
+	  if (message.equalsIgnoreCase(message02)){
+		  
+	  
+	  System.out.println("passed");
+  }
+	  else{
+		  
+	  System.out.println("failed");  
+	  }
+	  
+	  
+	  //validate first & last name
+	  String fullName = driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a/span")).getText();
 	  String name = firstName+" "+lastName;
 	  System.out.println(name);
+	  
+	  //click personal info link
+	  driver.findElement(By.xpath(".//*[@id='center_column']/div/div[1]/ul/li[5]/a/span")).click();
+	  
+	  //update last name 
+	  driver.findElement(By.xpath(".//*[@id='lastname']")).sendKeys("khan");
+	  
+	  
+	  //type current pass
+	  driver.findElement(By.xpath(".//*[@id='old_passwd']")).sendKeys("fahim1985");
+	  
+	  //click save button
+	  driver.findElement(By.xpath(".//*[@id='center_column']/div/form/fieldset/div[11]/button")).click();
+	  
+	  
+	  //Validate last name
+	  String lastname = driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a/span")).getText();
+	  String lastname02 = name+"khan";
+      System.out.println(lastname);
+      
+	  if (lastname.equalsIgnoreCase(lastname02)){
+		  
+	  
+	  System.out.println("passed");
+	  
+	  }
+	  
+      
+	  else{
+		  System.out.println("failed");
+	  }
+	  
+	  
 	  
   }
   
   
   
   
+  @Test (priority = 4, enabled = true)
+  public void productsearch() {
+	  
+	  //driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
+	  objHomePage = new HomePage(driver);
+	  objHomePage.clickSignInLink();
+	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  
+	  driver.findElement(By.xpath(".//*[@id='search_query_top']")).sendKeys("Shirt");
+	  driver.findElement(By.xpath(".//*[@id='searchbox']/button")).click();
+	  
+	  String Seller = driver.findElement(By.xpath(".//*[@id='best-sellers_block_right']/h4/a")).getText();
+	  String Seller2 = "TOP SELLERS";
+	  
+      System.out.println(Seller);
+	  
+	  if (Seller.equalsIgnoreCase(Seller2)){
+		  
+	  
+	  System.out.println("passed");
+  }
+	  else{
+		  
+	  System.out.println("failed"); 
+	  
+	  }
+	  
+	  
+  }
+  
+  
+  
+  
+	  
+	  
+  
+ 
+
   
   
   
@@ -112,7 +217,7 @@ public class fahimTest {
 
   @AfterMethod
   public void afterMethod() {
-	//  driver.close();
+	  //driver.close();
 	  
   }
 

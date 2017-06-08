@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="31643" started-at="2017-06-02T01:28:16Z" finished-at="2017-06-02T01:28:47Z">
+  <suite name="Default suite" duration-ms="23214" started-at="2017-06-08T01:16:18Z" finished-at="2017-06-08T01:16:41Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="31643" started-at="2017-06-02T01:28:16Z" finished-at="2017-06-02T01:28:47Z">
+    <test name="Default test" duration-ms="23214" started-at="2017-06-08T01:16:18Z" finished-at="2017-06-08T01:16:41Z">
       <class name="com.bruteforce.test.fahimTest">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.bruteforce.test.fahimTest@91161c7]" name="beforeMethod" is-config="true" duration-ms="6847" started-at="2017-06-01T21:28:16Z" finished-at="2017-06-01T21:28:22Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.bruteforce.test.fahimTest@91161c7]" name="beforeMethod" is-config="true" duration-ms="7513" started-at="2017-06-07T21:16:18Z" finished-at="2017-06-07T21:16:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="createNewAccount()[pri:3, instance:com.bruteforce.test.fahimTest@91161c7]" name="createNewAccount" duration-ms="24749" started-at="2017-06-01T21:28:22Z" finished-at="2017-06-01T21:28:47Z">
+        <test-method status="PASS" signature="createNewAccount()[pri:3, instance:com.bruteforce.test.fahimTest@91161c7]" name="createNewAccount" duration-ms="15655" started-at="2017-06-07T21:16:26Z" finished-at="2017-06-07T21:16:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createNewAccount -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.bruteforce.test.fahimTest@91161c7]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-06-01T21:28:47Z" finished-at="2017-06-01T21:28:47Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.bruteforce.test.fahimTest@91161c7]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-06-07T21:16:41Z" finished-at="2017-06-07T21:16:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
