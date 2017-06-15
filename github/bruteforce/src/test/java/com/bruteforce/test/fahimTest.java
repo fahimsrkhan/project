@@ -13,6 +13,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 
 
@@ -166,7 +170,7 @@ public class fahimTest {
   
   
   
-  @Test (priority = 4, enabled = true)
+  @Test (priority = 4, enabled = false)
   public void productsearch() {
 	  
 	  //driver.findElement(By.xpath(".//*[@id='header']/div[2]/div/div/nav/div[1]/a")).click();
@@ -198,7 +202,42 @@ public class fahimTest {
   
   
   
-  
+  @Test(priority = 5, enabled = true)
+  public void CartValidation(){
+	  
+	  
+	  
+	  //driver.findElement(By.xpath(".//*[@id='block_top_menu']/ul/li[2]/a")).click();
+	  //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  
+	  WebElement element = driver.findElement(By.xpath(".//*[@id='homefeatured']/li[1]/div/div[1]/div/a[1]/img"));
+	  //WebElement quickview = driver.findElement(By.xpath(".//*[@id='homefeatured']/li[1]/div/div[1]/div/a[2]"));
+	
+	 
+	  //Actions action = new Actions(driver);
+	 // action.moveToElement(dresses).build().perform();
+	  //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	 // driver.findElement(By.xpath(".//*[@id='homefeatured']/li[1]/div/div[1]/div/a[2]")).click();
+	  
+	  
+	  
+	  //WebElement element = driver.findElement(By.xpath(".//*[@id='homefeatured']/li[1]"));
+       //WebDriverWait wait = new WebDriverWait(driver, 30);
+         //wait.until(ExpectedConditions.visibilityOf(element));
+         Actions action = new Actions (driver);
+         action.moveToElement(element).click().build().perform();
+         //driver.findElement(By.xpath(".//*[@id='homefeatured']/li[1]/div/div[1]/div/a[2]")).click();
+	  
+         
+         
+         driver.findElement(By.xpath(".//*[@id='quantity_wanted_p']/a[2]/span")).click();  
+         
+         driver.findElement(By.xpath(".//*[@id='group_1']"));
+         driver.findElement(By.xpath(".//*[@id='group_1']"));
+         
+         
+         
+  }
 	  
 	  
   
@@ -210,9 +249,20 @@ public class fahimTest {
   @BeforeMethod
   public void beforeMethod() {
 	  
-	 System.setProperty("webdriver.chrome.driver", "./util/chromedriver.exe");
+	 String BrowserName = "Chrome";
+	 
+	 if (BrowserName.equals("Chrome")){
+		  
+	  System.setProperty("webdriver.chrome.driver", "./util/chromedriver.exe");
 	 driver = new ChromeDriver();
 	 driver.get("http://ebfs.bruteforcesolution.net/ebfs/");
+  }
+	 else if(BrowserName.equalsIgnoreCase("gecko")){
+	  System.setProperty("webdriver.gecko.driver", "./util/geckodriver.exe");
+	  driver = new FirefoxDriver();
+	  driver.get("http://ebfs.bruteforcesolution.net/ebfs/");
+	  
+  }
   }
 
   @AfterMethod

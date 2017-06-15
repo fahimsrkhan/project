@@ -6,7 +6,7 @@
       <class name="com.bruteforce.test.fahimTest">
         <methods>
           <include name="beforeMethod"/>
-          <include name="createNewAccount"/>
+          <include name="CartValidation"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- com.bruteforce.test.fahimTest -->
